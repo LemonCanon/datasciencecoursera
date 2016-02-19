@@ -19,21 +19,21 @@ pollutanmean <- function(directory, polutant, id = 1:332) {
     
     for(i in 1:length(id)){
     
-    ##select data to be read
-    datatarget <- paste(directory, "/",str_pad(id[i],3,pad = 0), ".csv", sep = "" )
+        ##select data to be read
+        datatarget <- paste(directory, "/",str_pad(id[i],3,pad = 0), ".csv", sep = "" )
     
-    ##read data and store it to memory
-    data <- read.csv(datatarget)
+         ##read data and store it to memory
+        data <- read.csv(datatarget)
     
-    pdata <- data[polutant]
+        pdata <- data[polutant]
     
-    cleandata <- pdata[!is.na(pdata)]
-    ##take mean of datapoints
+        cleandata <- pdata[!is.na(pdata)]
+        ##take mean of datapoints
     
-    meanfile <- mean(cleandata)
+        meanfile <- mean(cleandata)
     
-    ##store mean of file
-    means[i] <- meanfile
+        ##store mean of file
+        means[i] <- meanfile
     }
     mean(means)
     
