@@ -15,7 +15,7 @@ pollutanmean <- function(directory, polutant, id = 1:332) {
     
     ##--------------------------------------------------------------------------
     library(stringr)
-    means <- numeric()
+    bigdata <- numeric()
     
     for(i in 1:length(id)){
     
@@ -26,17 +26,13 @@ pollutanmean <- function(directory, polutant, id = 1:332) {
         data <- read.csv(datatarget)
     
         pdata <- data[polutant]
-    
+        
+        ##remove NA values
         cleandata <- pdata[!is.na(pdata)]
-        ##take mean of datapoints
-    
-        meanfile <- mean(cleandata)
-    
-        ##store mean of file
-        means[i] <- meanfile
+        
+        ##add cleaned data to big data
+        bigdata <- c(bigdata, cleandata)
+        
     }
-    mean(means)
-    
-    ##take mean of all files in list
-
+    mean(bigdata)
 }
